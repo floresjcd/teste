@@ -2,8 +2,6 @@
 
 **Professor:** José Carlos Flores  
 **Disciplina:** Programação Front-End  
-**Duração:** 360 minutos (6 horas)  
-**Nível:** Intermediário  
 **Data:** 2026
 
 ---
