@@ -1,6 +1,6 @@
 # Apostila: Design Responsivo, Media Queries e Unidades de Medida CSS
 
-**Curso:** Engenharia de Software
+**Curso:** Engenharia de Software  
 **Professor:** José Carlos Flores  
 **Disciplina:** Programação Front-End  
 **Data:** 2026
