@@ -1,9 +1,9 @@
 # Apostila de Programação Front-End: Design Responsivo, Media Queries e Unidades de Medida
 
-**Disciplina:** Programação Front-End  
-**Professor:** José Carlos Flores  
 **Curso:** Engenharia de Software  
-**Carga Horária Estimada:** 360 minutos (6 horas)
+**Professor:** José Carlos Flores  
+**Disciplina:** Programação Front-End  
+**Data:** 2026
 
 ---
 
