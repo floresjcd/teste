@@ -10,7 +10,7 @@
 
 A evolução do desenvolvimento web trouxe consigo a necessidade de ferramentas mais robustas para a construção de aplicações de grande escala. O JavaScript, embora seja a linguagem universal da web, possui tipagem dinâmica, o que pode ocasionar erros em tempo de execução difíceis de rastrear em projetos complexos. Nesse cenário, surge o TypeScript, um superconjunto (superset) tipado do JavaScript desenvolvido pela Microsoft.
 
-O TypeScript adiciona tipagem estática opcional ao JavaScript, permitindo que os desenvolvedores identifiquem erros durante a fase de desenvolvimento (tempo de compilação) em vez de descobri-los apenas quando o código está em execução. Essa característica é fundamental para a Engenharia de Software, pois promove a manutenibilidade, a legibilidade e a escalabilidade do código-fonte. Além disso, o TypeScript oferece suporte a recursos modernos de orientação a objetos, como classes, interfaces e módulos, facilitando a estruturação de componentes robustos [1].
+O TypeScript adiciona tipagem estática opcional ao JavaScript, permitindo que os desenvolvedores identifiquem erros durante a fase de desenvolvimento (tempo de compilação) em vez de descobri-los apenas quando o código está em execução. Essa característica é fundamental para a Engenharia de Software, pois promove a manutenibilidade, a legibilidade e a escalabilidade do código-fonte. Além disso, o TypeScript oferece suporte a recursos modernos de orientação a objetos, como classes, interfaces e módulos, facilitando a estruturação de componentes robustos.
 
 Nesta aula, exploraremos detalhadamente como configurar um ambiente de desenvolvimento profissional utilizando o Visual Studio Code (VS Code), um dos editores de código mais populares e poderosos da atualidade, que possui suporte nativo excepcional para TypeScript.
 
@@ -26,7 +26,8 @@ O Node.js é um ambiente de execução JavaScript server-side, e o NPM (Node Pac
 
 1. Acesse o site oficial do Node.js (https://nodejs.org) e faça o download da versão LTS (Long Term Support).
 2. Execute o instalador e siga as instruções padrão.
-3. Para verificar se a instalação foi bem-sucedida, abra o terminal (ou prompt de comando) e execute os seguintes comandos:
+3. Reinicie o Computador após a instalação.
+4. Para verificar se a instalação foi bem-sucedida, abra o terminal (ou prompt de comando) e execute os seguintes comandos:
 
 ```bash
 node -v
@@ -44,38 +45,23 @@ O Visual Studio Code é um editor de código-fonte leve, porém poderoso, que ro
 
 ---
 
-## 3. Instalação do Compilador TypeScript
+## 3. Criando o Projeto TypeScript
 
-Com o Node.js e o NPM devidamente instalados, o próximo passo é instalar o compilador do TypeScript (`tsc`). A abordagem mais comum para iniciantes é instalar o compilador globalmente, o que permite utilizá-lo em qualquer diretório do sistema.
+Vamos criar nosso primeiro projeto. A organização do diretório de trabalho é uma prática essencial.
 
-Abra o terminal e execute o seguinte comando:
+### 3.1. Estruturação do Diretório
 
-```bash
-npm install -g typescript
-```
+Abra o **Prompt de Comando** e execute os comandos abaixo um por um:
 
-O parâmetro `-g` indica que a instalação será global. Após a conclusão, verifique a instalação executando:
 
 ```bash
-tsc --version
-```
-
-Este comando exibirá a versão do compilador TypeScript instalada em sua máquina.
-
----
-
-## 4. Criando o Primeiro Projeto TypeScript
-
-Agora que o ambiente está configurado, vamos criar nosso primeiro projeto. A organização do diretório de trabalho é uma prática essencial na Engenharia de Software.
-
-### 4.1. Estruturação do Diretório
-
-1. Crie uma nova pasta para o projeto. Você pode fazer isso via interface gráfica ou pelo terminal:
-
-```bash
+# 1. Criar a pasta do projeto
 mkdir MeuProjetoTS
 cd MeuProjetoTS
-```
+
+# 2. Criar a estrutura de pastas
+mkdir src
+mkdir dist
 
 2. Abra esta pasta no Visual Studio Code. No terminal, você pode utilizar o comando:
 
@@ -83,38 +69,29 @@ cd MeuProjetoTS
 code .
 ```
 
-### 4.2. Escrevendo o Primeiro Código
+## 4. Instalar o TypeScript e configurações
 
-No VS Code, crie um novo arquivo chamado `index.ts`. A extensão `.ts` indica que se trata de um arquivo TypeScript. Insira o seguinte código:
+Ainda dentro da pasta `MeuProjetoTS`, no terminal execute:
 
-```typescript
-let saudacao: string = "Olá, acadêmicos de Engenharia de Software e ADS!";
-console.log(saudacao);
+```powershell
+# Instala TypeScript globalmente (para usar tsc)
+npm install -g typescript
+
+# Este comando exibirá a versão do compilador TypeScript instalada em sua máquina.
+tsc --version
+
+# Instala TypeScript como dependência do projeto
+npm install --save-dev typescript @types/node
+
+# Instala ts-node (para executar .ts direto sem compilar)
+npm install --save-dev ts-node
 ```
-
-Observe a sintaxe `let saudacao: string`. Esta é a anotação de tipo do TypeScript, que define explicitamente que a variável `saudacao` só pode armazenar valores do tipo texto (string).
-
-### 4.3. Compilação Manual
-
-Como mencionado anteriormente, o TypeScript precisa ser transpilado para JavaScript. Para compilar o arquivo que acabamos de criar, abra o terminal integrado do VS Code (atalho: `` Ctrl + ` ``) e execute:
-
-```bash
-tsc index.ts
-```
-
-Após a execução deste comando, você notará que um novo arquivo chamado `index.js` foi gerado no mesmo diretório. Este é o código JavaScript resultante, que pode ser executado pelo Node.js:
-
-```bash
-node index.js
-```
-
-O terminal exibirá a mensagem: `Olá, acadêmicos de Engenharia de Software e ADS!`.
 
 ---
 
-## 5. Configuração Avançada com `tsconfig.json`
+## 5. Criar o tsconfig.json
 
-A compilação manual de arquivos individuais torna-se inviável à medida que o projeto cresce. Para gerenciar projetos complexos, o TypeScript utiliza um arquivo de configuração chamado `tsconfig.json`. Este arquivo define as opções do compilador e os arquivos que devem ser incluídos no processo de compilação [1].
+A compilação manual de arquivos individuais torna-se inviável à medida que o projeto cresce. Para gerenciar projetos complexos, o TypeScript utiliza um arquivo de configuração chamado `tsconfig.json`. Este arquivo define as opções do compilador e os arquivos que devem ser incluídos no processo de compilação.
 
 ### 5.1. Inicializando o Arquivo de Configuração
 
@@ -128,38 +105,25 @@ Um arquivo `tsconfig.json` será gerado. Ao abri-lo, você verá diversas opçõ
 
 ### 5.2. Opções Essenciais do Compilador
 
-A tabela a seguir descreve as principais configurações que devem ser ajustadas no seu `tsconfig.json`:
-
-| Opção | Descrição | Valor Recomendado |
-| :--- | :--- | :--- |
-| `target` | Define a versão do ECMAScript para a qual o código será transpilado. | `"ES2022"` ou `"ESNext"` |
-| `module` | Especifica o sistema de módulos a ser utilizado. | `"CommonJS"` (para Node) ou `"ESNext"` |
-| `rootDir` | Define o diretório raiz onde os arquivos TypeScript (`.ts`) estão localizados. | `"./src"` |
-| `outDir` | Define o diretório de saída onde os arquivos JavaScript (`.js`) compilados serão salvos. | `"./dist"` ou `"./build"` |
-| `strict` | Habilita um conjunto rigoroso de verificações de tipo, garantindo maior segurança no código. | `true` |
-| `sourceMap` | Gera arquivos `.map` que auxiliam na depuração, mapeando o código JS de volta para o TS original. | `true` |
-
-### 5.3. Reestruturando o Projeto
-
-Com base nas configurações acima, vamos reorganizar nosso projeto para seguir as melhores práticas:
-
-1. Crie uma pasta chamada `src` (source) na raiz do projeto.
-2. Mova o arquivo `index.ts` para dentro da pasta `src`.
-3. Ajuste o seu `tsconfig.json` para refletir as seguintes configurações:
+Ajuste o seu `tsconfig.json` para refletir as seguintes configurações:
 
 ```json
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "rootDir": "./src",
     "outDir": "./dist",
+    "types": ["node"],
     "strict": true,
-    "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
 ```
 
@@ -173,11 +137,47 @@ O compilador lerá o `tsconfig.json`, buscará os arquivos na pasta `src` e gera
 
 ---
 
-## 6. Automação e Depuração (Debugging) no VS Code
+
+## 6. Escrevendo o Primeiro Código
+
+No VS Code, crie um novo arquivo chamado `index.ts`. A extensão `.ts` indica que se trata de um arquivo TypeScript. Insira o seguinte código:
+
+```typescript
+let saudacao: string = "Olá, acadêmicos de Engenharia de Software e ADS!";
+console.log(saudacao);
+```
+
+Observe a sintaxe `let saudacao: string`. Esta é a anotação de tipo do TypeScript, que define explicitamente que a variável `saudacao` só pode armazenar valores do tipo texto (string).
+
+### 6.1. Compilação
+
+Como mencionado anteriormente, o TypeScript precisa ser transpilado para JavaScript. Para compilar o arquivo que acabamos de criar, abra o terminal integrado do VS Code (atalho: `` Ctrl + ` ``) e execute:
+
+```bash
+tsc 
+```
+
+Após a execução deste comando, você notará que um novo arquivo chamado `index.js` foi gerado no diretório src. Este é o código JavaScript resultante, que pode ser executado pelo Node.js:
+
+```bash
+node index.js
+```
+
+O terminal exibirá a mensagem: `Olá, acadêmicos de Engenharia de Software e ADS!`.
+
+
+**Ou executar direto sem compilar (mais prático para treino):**
+
+```powershell
+npx ts-node src/index.ts
+```
+---
+
+## 7. Automação e Depuração (Debugging) no VS Code
 
 Para otimizar o fluxo de trabalho, podemos automatizar a compilação e configurar o VS Code para depurar nosso código TypeScript diretamente.
 
-### 6.1. Modo de Observação (Watch Mode)
+### 7.1. Modo de Observação (Watch Mode)
 
 Durante o desenvolvimento, é produtivo que o código seja compilado automaticamente a cada salvamento. Para ativar o modo de observação, utilize a flag `-w` ou `--watch`:
 
@@ -187,7 +187,7 @@ tsc --watch
 
 O terminal ficará bloqueado, observando as alterações nos arquivos `.ts` e recompilando-os instantaneamente.
 
-### 6.2. Configurando o Debugger
+### 7.2. Configurando o Debugger
 
 O VS Code possui suporte nativo para depuração de TypeScript, desde que os `source maps` estejam habilitados no `tsconfig.json` (como fizemos no passo 5.2) [1].
 
@@ -222,13 +222,28 @@ Para testar, adicione um *breakpoint* (ponto de interrupção) clicando à esque
 
 ---
 
-## 7. Conclusão
+## 8. Conclusão
 
 A adoção do TypeScript em projetos de desenvolvimento de software representa um avanço significativo na garantia de qualidade e na prevenção de erros. A configuração adequada do ambiente no Visual Studio Code, compreendendo o papel do compilador, a estruturação de diretórios e a utilização do `tsconfig.json`, é o alicerce para o desenvolvimento de aplicações front-end escaláveis e de fácil manutenção.
 
 Incentivo todos os acadêmicos a explorarem os recursos avançados do TypeScript e a integrarem essas práticas em seus projetos acadêmicos e profissionais.
 
----
+## **Resumo da estrutura final da pasta do projeto**
+
+```
+MeuProjetoTS/
+├── src/                  ← Seus arquivos .ts
+│   └── index.ts
+├── dist/                 ← Arquivos .js compilados
+├── node_modules/
+├── package.json
+├── tsconfig.json
+└── package-lock.json
+```
+
+---  
+
+
 
 ## Referências
 
