@@ -1,5 +1,3 @@
-Perfeito. A seguir está a **atividade proposta**, elaborada no papel do **prof. José Carlos Flores**, pronta para uso em sala ou AVA.
-
 ***
 
 ## Atividade Prática – Diagramas de Interação UML
